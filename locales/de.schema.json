@@ -3405,6 +3405,28 @@
       "presets": {
         "name": "Schnelle Bestellliste"
       }
+    },
+    "outfit": {
+      "name": "Outfit",
+      "settings": {
+        "outfit_title": {
+          "label": "Titel",
+          "default": "Unser Lieblings-Outfit"
+        },
+        "outfit_description": {
+          "label": "Beschreibung"
+        },
+        "outfit_products": {
+          "label": "Produkte im Outfit"
+        },
+        "outfit_image": {
+          "label":"Outfit Bild"
+        }
+      },
+      "presets": {
+        "name": "Outfit"
+      }
     }
+  
   }
 }

@@ -3405,6 +3405,27 @@
       "presets": {
         "name": "Collapsible content"
       }
+    },
+    "outfit": {
+      "name": "Outfit",
+      "settings": {
+        "outfit_title": {
+          "label": "Title",
+          "default": "Our Favorite Outfit"
+        },
+        "outfit_description": {
+          "label": "Description"
+        },
+        "outfit_products": {
+          "label": "Products in Outfit"
+        },
+        "outfit_image": {
+          "label":"Outfit Image"
+        }
+      },
+      "presets": {
+        "name": "Outfit"
+      }
     }
   }
 }

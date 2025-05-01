@@ -1,0 +1,60 @@
+{{ 'section-outfit.css' | asset_url | stylesheet_tag }}
+
+<section class="section__outfit">
+
+  <div class="outfit_title">
+    {{ section.settings.outfit_title }}
+  </div>
+  <div class="outfit_image">
+    {{ section.settings.outfit_image | image_url: width: 500 | image_tag }}
+  </div>
+  <div class="outfit_description">
+    {{ section.settings.outfit_description }}
+  </div>
+  <div class="outfit_products">
+    {% for product in section.settings.outfit_products %}
+      {{ product.title }}
+    {% endfor %}
+  </div>
+</section>
+
+
+<script>
+
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.outfit.name",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "outfit_title",
+      "label": "t:sections.outfit.settings.outfit_title.label",
+      "default": "t:sections.outfit.settings.outfit_title.default"
+    },
+    {
+      "type": "richtext",
+      "id": "outfit_description",
+      "label": "t:sections.outfit.settings.outfit_description.label"
+    },    
+    {
+      "type": "product_list",
+      "id": "outfit_products",
+      "label": "t:sections.outfit.settings.outfit_products.label"
+    },  
+    {
+      "type": "image_picker",
+      "id": "outfit_image",
+      "label": "t:sections.outfit.settings.outfit_products.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.outfit.presets.name"
+    }
+  ]
+}
+{% endschema %}
