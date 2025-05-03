@@ -45,10 +45,10 @@
           {% endif %}
         </div>
       {% endfor %}
-      
-      <div class="outfit-warning" hidden>{{ 'sections.outfit_section.outfit_warning' | t }}</div>
-      <button class="outfit-submit" role="button" disabled>{{ 'sections.outfit_section.outfit_submit' | t }}</button>
-
+      {% if section.settings.outfit_products %}
+        <div class="outfit-warning" hidden>{{ 'sections.outfit_section.outfit_warning' | t }}</div>
+        <button class="outfit-submit" role="button" disabled>{{ 'sections.outfit_section.outfit_submit' | t }}</button>
+      {% endif %}
     </div>
   {% endif %}
 </section-outfit>
