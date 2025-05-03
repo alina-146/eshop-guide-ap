@@ -1,30 +1,64 @@
 {{ 'section-outfit.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-outfit.js' | asset_url }}" defer="defer"></script>
 
-<section class="section__outfit">
-
+<section-outfit class="section__outfit">
   <h3 class="outfit_title">
     {{ section.settings.outfit_title }}
   </h3>
-  <div class="outfit_image">
-    {{ section.settings.outfit_image | image_url: width: 500 | image_tag }}
-  </div>
-  <div class="outfit_description">
-    {{ section.settings.outfit_description }}
-   
-  </div>
-  <div class="outfit_products">
-    {% for product in section.settings.outfit_products %}
-     <div class="outfit_product">{{ product.title }}</div> 
-    {% endfor %}
-    <button>add all to cart</button>
-  </div>
-  
-</section>
+  {% if section.settings.outfit_image %}
+    <div class="outfit_image">
+      {{ section.settings.outfit_image | image_url: width: 500 | image_tag }}
+    </div>
+  {% endif %}
 
+  {% if section.settings.outfit_description %}
+    <div class="outfit_description">
+      {{ section.settings.outfit_description }}
+    </div>
+  {% endif %}
 
-<script>
+  {% if section.settings.outfit_products %}
+    <div class="outfit_products">
+      {% for product in section.settings.outfit_products %}
+        <div class="outfit_product" data-selected-variant-id="">
+          <h3>{{ product.title }}</h3>
+          {% if product.variants.size == 1 %}
+            {% assign variant = product.variants.first %}
+            <div class="variant-option" style="display: none;">
+              <input
+                type="radio"
+                id="variant-{{ variant.id }}"
+                name="variant-{{ product.id }}"
+                value="{{ variant.id }}"
+                checked
+              >
+              <label for="variant-{{ variant.id }}">{{ variant.title }}</label>
+            </div>
+          {% else %}
+            {% for variant in product.variants %}
+              <div class="variant-option">
+                <input
+                  type="radio"
+                  id="variant-{{ variant.id }}"
+                  name="variant-{{ product.id }}"
+                  value="{{ variant.id }}"
+                >
+                <label for="variant-{{ variant.id }}">{{ variant.title }}</label>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endfor %}
+      <button class="outfit-submit">buy outfit</button>
+    </div>
+    
+  {% endif %}
 
-</script>
+  <div class="outfit-cart-notification">
+    {{ 'sections.outfit_section.outfit_cart_notification' | t }}
+  </div>
+    
+</section-outfit>
 
 {% schema %}
 {

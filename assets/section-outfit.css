@@ -1,32 +1,65 @@
-section.section__outfit {
+section-outfit.section__outfit {
   display: flex;
   flex-wrap: wrap;
 }
 
-section.section__outfit > * {
+section-outfit.section__outfit > * {
   margin: 3rem;
 }
 
-section.section__outfit .outfit_title {
+section-outfit.section__outfit .outfit_title {
   flex: 1 0 100%;
 }
-section.section__outfit .outfit_image {
+section-outfit.section__outfit .outfit_image {
   flex: 1 1 20%;
 }
 
-section.section__outfit .outfit_image img {
+section-outfit.section__outfit .outfit_image img {
   max-width: 100%;
   height: auto;
 }
 
-section.section__outfit .outfit_description {
+section-outfit.section__outfit .outfit_description {
   flex: 1 1 25%;
 }
 
-section.section__outfit .outfit_description p {
+section-outfit.section__outfit .outfit_description p {
   margin: unset;
 }
 
-section.section__outfit .outfit_products {
+section-outfit.section__outfit .outfit_products {
   flex: 1 1 25%;
 }
+
+
+section-outfit .outfit-cart-notification {
+    position: fixed;
+    top: 20px;
+    right: -100%;
+    background-color: #333;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: right 0.4s ease-in-out;
+    z-index: 9999;
+    max-width: 90%;
+    font-size: 1rem;
+  }
+  
+  /* Sichtbar-Zustand */
+  .outfit-cart-notification.show {
+    right: 20px;
+  }
+  
+  /* Responsive Anpassung */
+  @media (max-width: 600px) {
+    .outfit-cart-notification {
+      font-size: 0.9rem;
+      padding: 0.8rem 1rem;
+      right: -100%;
+    }
+    .outfit-cart-notification.show {
+      right: 10px;
+    }
+  }
