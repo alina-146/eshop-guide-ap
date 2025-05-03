@@ -35,9 +35,8 @@
             >
           {% else %}
             <div class="variant-option">
-              <label for="variant-select-{{ product.id }}" class="visually-hidden">Variante wählen</label>
               <select id="variant-select-{{ product.id }}" name="variant-{{ product.id }}" class="variant-select">
-                <option value="">Bitte Variante wählen</option>
+                <option value="">{{ 'sections.outfit_section.first_variant_option' | t }}</option>
                 {% for variant in product.variants %}
                   <option value="{{ variant.id }}">{{ variant.title }}</option>
                 {% endfor %}
@@ -47,8 +46,8 @@
         </div>
       {% endfor %}
       
-      <div class="outfit-warning" hidden>Bitte wähle zuerst eine Variante für alle Produkte.</div>
-      <button class="outfit-submit" role="button" disabled>buy outfit</button>
+      <div class="outfit-warning" hidden>{{ 'sections.outfit_section.outfit_warning' | t }}</div>
+      <button class="outfit-submit" role="button" disabled>{{ 'sections.outfit_section.outfit_submit' | t }}</button>
 
     </div>
   {% endif %}

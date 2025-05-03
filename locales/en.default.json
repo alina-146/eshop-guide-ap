@@ -381,6 +381,11 @@
       "min_error": "This item has a minimum of {{ min }}",
       "max_error": "This item has a maximum of {{ max }}",
       "step_error": "You can only add this item in increments of {{ step }}"
+    },
+    "outfit_section": {
+      "first_variant_option": "Please choose a variant",
+      "outfit_warning":"Please select a variant for every product first.",
+      "outfit_submit": "Add Outfit to Cart"
     }
   },
   "localization": {

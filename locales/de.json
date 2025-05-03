@@ -380,6 +380,11 @@
       "min_error": "Dieser Artikel hat ein Minimum von {{ min }}",
       "max_error": "Dieser Artikel hat ein Maximum von {{ max }}",
       "step_error": "Du kannst diesen Artikel nur in Abstufungen von {{ step }} hinzufügen."
+    },
+    "outfit_section": {
+      "first_variant_option": "Bitte Variante wählen",
+      "outfit_warning":"Bitte wähle zuerst eine Variante für alle Produkte.",
+      "outfit_submit": "Outfit in den Warenkorb"
     }
   },
   "localization": {
