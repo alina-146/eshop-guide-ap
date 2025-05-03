@@ -1,27 +1,29 @@
 {{ 'section-outfit.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'section-outfit.js' | asset_url }}" defer="defer"></script>
 
-<section-outfit class="section__outfit">
-  <h3 class="outfit_title">
+<section-outfit class="section__outfit" role="region" aria-labelledby="outfit-title">
+  <h3 id="outfit-title" class="outfit_title">
     {{ section.settings.outfit_title }}
   </h3>
+
   {% if section.settings.outfit_image %}
-    <div class="outfit_image">
+    <div class="outfit_image" role="img" aria-label="Outfit image">
       {{ section.settings.outfit_image | image_url: width: 500 | image_tag }}
     </div>
   {% endif %}
 
   {% if section.settings.outfit_description %}
-    <div class="outfit_description">
+    <div class="outfit_description" role="note">
       {{ section.settings.outfit_description }}
     </div>
   {% endif %}
 
   {% if section.settings.outfit_products %}
-    <div class="outfit_products">
+    <div class="outfit_products" role="group" aria-label="Outfit product selection">
       {% for product in section.settings.outfit_products %}
-        <div class="outfit_product" data-selected-variant-id="">
-          <h3>{{ product.title }}</h3>
+        <div class="outfit_product" data-selected-variant-id="" role="group" aria-labelledby="product-title-{{ forloop.index }}">
+          <h3 id="product-title-{{ forloop.index }}">{{ product.title }}</h3>
+
           {% if product.variants.size == 1 %}
             {% assign variant = product.variants.first %}
             <div class="variant-option" style="display: none;">
@@ -31,6 +33,7 @@
                 name="variant-{{ product.id }}"
                 value="{{ variant.id }}"
                 checked
+                aria-hidden="true"
               >
               <label for="variant-{{ variant.id }}">{{ variant.title }}</label>
             </div>
@@ -42,6 +45,8 @@
                   id="variant-{{ variant.id }}"
                   name="variant-{{ product.id }}"
                   value="{{ variant.id }}"
+                  role="radio"
+                  aria-checked="false"
                 >
                 <label for="variant-{{ variant.id }}">{{ variant.title }}</label>
               </div>
@@ -49,11 +54,9 @@
           {% endif %}
         </div>
       {% endfor %}
-      <button class="outfit-submit">buy outfit</button>
+      <button class="outfit-submit" role="button">buy outfit</button>
     </div>
-    
   {% endif %}
-    
 </section-outfit>
 
 {% schema %}
