@@ -44,7 +44,7 @@ class SectionOutfit extends HTMLElement {
 
   addToCart(formData) {
     this.notification = document.querySelector('.outfit-cart-notification');
-  
+
     fetch(`${window.Shopify.routes.root}cart/add.js`, {
       method: 'POST',
       headers: {
@@ -54,18 +54,30 @@ class SectionOutfit extends HTMLElement {
     })
     .then(response => response.json())
     .then(() => {
-      // Timeout auf this legen, um Konflikte zu vermeiden
-      clearTimeout(this.notificationTimeout);
-  
-      this.notification.classList.add('show');
-  
-      this.notificationTimeout = setTimeout(() => {
-        this.notification.classList.remove('show');
-      }, 3000);
+      document.getElementById('cart-notification').classList.add('animate', 'active');
+      this.updateCartCount();
     })
     .catch(error => {
       console.error('Fehler beim Hinzufügen:', error);
     });
+  }
+
+  updateCartCount() {
+    fetch(`${window.Shopify.routes.root}cart.js`)
+      .then(response => response.json())
+      .then(cart => {
+        const count = cart.item_count;
+        const bubble = document.querySelector('.cart-count-bubble');
+        if (bubble) {
+          const spans = bubble.querySelectorAll('span');
+          spans.forEach(span => {
+            span.textContent = span.classList.contains('visually-hidden') ? `${count} items` : count;
+          });
+        }
+      })
+      .catch(error => {
+        console.error('Fehler beim Abrufen des Warenkorbs:', error);
+      });
   }
 }
 
