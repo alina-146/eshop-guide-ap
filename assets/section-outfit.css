@@ -31,18 +31,6 @@ section-outfit.section__outfit .outfit_products {
   flex: 1 1 25%;
 }
   
-  /* Responsive Anpassung */
-  @media (max-width: 600px) {
-    section-outfit .outfit-cart-notification {
-      font-size: 0.9rem;
-      padding: 0.8rem 1rem;
-      right: -100%;
-    }
-    section-outfit .outfit-cart-notification.show {
-      right: 10px;
-    }
-  }
-
   section-outfit .variant-select {
     padding: 0.5rem;
     font-size: 1rem;
