@@ -1,9 +1,9 @@
 {{ 'section-outfit.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'section-outfit.js' | asset_url }}" defer="defer"></script>
 
-<section-outfit class="section__outfit" role="region" aria-labelledby="outfit-title">
+<section-outfit class="section__outfit" role="region" aria-labelledby="outfit_title">
   {% if section.settings.outfit_title %}
-    <h3 id="outfit-title" class="outfit_title">
+    <h3 id="outfit_title" class="outfit_title">
       {{ section.settings.outfit_title }}
     </h3>
   {% endif %}
@@ -78,7 +78,7 @@
     {
       "type": "image_picker",
       "id": "outfit_image",
-      "label": "t:sections.outfit.settings.outfit_products.label"
+      "label": "t:sections.outfit.settings.outfit_image.label"
     }
   ],
   "presets": [

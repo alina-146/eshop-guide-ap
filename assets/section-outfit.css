@@ -48,29 +48,29 @@ section-outfit .outfit-cart-notification {
   }
   
   /* Sichtbar-Zustand */
-  .outfit-cart-notification.show {
+  section-outfit .outfit-cart-notification.show {
     right: 20px;
   }
   
   /* Responsive Anpassung */
   @media (max-width: 600px) {
-    .outfit-cart-notification {
+    section-outfit .outfit-cart-notification {
       font-size: 0.9rem;
       padding: 0.8rem 1rem;
       right: -100%;
     }
-    .outfit-cart-notification.show {
+    section-outfit .outfit-cart-notification.show {
       right: 10px;
     }
   }
 
-  .variant-select {
+  section-outfit .variant-select {
     padding: 0.5rem;
     font-size: 1rem;
     margin-bottom: 1rem;
   }
   
-  .outfit-warning {
+  section-outfit .outfit-warning {
     color: red;
     font-size: 0.9rem;
     margin-top: 1rem;
