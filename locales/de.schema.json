@@ -3410,8 +3410,7 @@
       "name": "Outfit",
       "settings": {
         "outfit_title": {
-          "label": "Titel",
-          "default": "Unser Lieblings-Outfit"
+          "label": "Titel"
         },
         "outfit_description": {
           "label": "Beschreibung"

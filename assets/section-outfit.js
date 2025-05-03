@@ -13,14 +13,35 @@ class SectionOutfit extends HTMLElement {
 
   initVariantSelection() {
     this.outfitProducts.forEach(product => {
-      const radios = product.querySelectorAll('input[type="radio"]');
-      radios.forEach(radio => {
-        radio.addEventListener('change', () => {
-          product.dataset.selectedVariantId = radio.value;
+      const select = product.querySelector('select');
+      const hiddenInput = product.querySelector('input[data-autoselect]');
+  
+      if (hiddenInput) {
+        product.dataset.selectedVariantId = hiddenInput.value;
+      }
+  
+      if (select) {
+        select.addEventListener('change', () => {
+          product.dataset.selectedVariantId = select.value || '';
+          this.validateAllSelected();
         });
-      });
+      }
     });
+  
+    this.validateAllSelected(); // Initialcheck
   }
+  
+  validateAllSelected() {
+    const allSelected = Array.from(this.outfitProducts).every(
+      product => product.dataset.selectedVariantId
+    );
+    const warning = this.querySelector('.outfit-warning');
+  
+    this.addToCartButton.disabled = !allSelected;
+    warning.hidden = allSelected;
+  }
+  
+  
 
   handleAddToCart() {
     const items = [];

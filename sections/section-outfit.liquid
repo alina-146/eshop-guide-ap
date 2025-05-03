@@ -2,10 +2,11 @@
 <script src="{{ 'section-outfit.js' | asset_url }}" defer="defer"></script>
 
 <section-outfit class="section__outfit" role="region" aria-labelledby="outfit-title">
-  <h3 id="outfit-title" class="outfit_title">
-    {{ section.settings.outfit_title }}
-  </h3>
-
+  {% if section.settings.outfit_title %}
+    <h3 id="outfit-title" class="outfit_title">
+      {{ section.settings.outfit_title }}
+    </h3>
+  {% endif %}
   {% if section.settings.outfit_image %}
     <div class="outfit_image" role="img" aria-label="Outfit image">
       {{ section.settings.outfit_image | image_url: width: 500 | image_tag }}
@@ -23,38 +24,32 @@
       {% for product in section.settings.outfit_products %}
         <div class="outfit_product" data-selected-variant-id="" role="group" aria-labelledby="product-title-{{ forloop.index }}">
           <h3 id="product-title-{{ forloop.index }}">{{ product.title }}</h3>
-
+      
           {% if product.variants.size == 1 %}
             {% assign variant = product.variants.first %}
-            <div class="variant-option" style="display: none;">
-              <input
-                type="radio"
-                id="variant-{{ variant.id }}"
-                name="variant-{{ product.id }}"
-                value="{{ variant.id }}"
-                checked
-                aria-hidden="true"
-              >
-              <label for="variant-{{ variant.id }}">{{ variant.title }}</label>
-            </div>
+            <input
+              type="hidden"
+              name="variant-{{ product.id }}"
+              value="{{ variant.id }}"
+              data-autoselect
+            >
           {% else %}
-            {% for variant in product.variants %}
-              <div class="variant-option">
-                <input
-                  type="radio"
-                  id="variant-{{ variant.id }}"
-                  name="variant-{{ product.id }}"
-                  value="{{ variant.id }}"
-                  role="radio"
-                  aria-checked="false"
-                >
-                <label for="variant-{{ variant.id }}">{{ variant.title }}</label>
-              </div>
-            {% endfor %}
+            <div class="variant-option">
+              <label for="variant-select-{{ product.id }}" class="visually-hidden">Variante wählen</label>
+              <select id="variant-select-{{ product.id }}" name="variant-{{ product.id }}" class="variant-select">
+                <option value="">Bitte Variante wählen</option>
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}">{{ variant.title }}</option>
+                {% endfor %}
+              </select>
+            </div>
           {% endif %}
         </div>
       {% endfor %}
-      <button class="outfit-submit" role="button">buy outfit</button>
+      
+      <div class="outfit-warning" hidden>Bitte wähle zuerst eine Variante für alle Produkte.</div>
+      <button class="outfit-submit" role="button" disabled>buy outfit</button>
+
     </div>
   {% endif %}
 </section-outfit>
@@ -68,8 +63,7 @@
     {
       "type": "text",
       "id": "outfit_title",
-      "label": "t:sections.outfit.settings.outfit_title.label",
-      "default": "t:sections.outfit.settings.outfit_title.default"
+      "label": "t:sections.outfit.settings.outfit_title.label"
     },
     {
       "type": "richtext",

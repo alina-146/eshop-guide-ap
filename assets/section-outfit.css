@@ -63,3 +63,16 @@ section-outfit .outfit-cart-notification {
       right: 10px;
     }
   }
+
+  .variant-select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .outfit-warning {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  
