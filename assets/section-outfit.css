@@ -30,27 +30,6 @@ section-outfit.section__outfit .outfit_description p {
 section-outfit.section__outfit .outfit_products {
   flex: 1 1 25%;
 }
-
-
-section-outfit .outfit-cart-notification {
-    position: fixed;
-    top: 20px;
-    right: -100%;
-    background-color: #333;
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: right 0.4s ease-in-out;
-    z-index: 9999;
-    max-width: 90%;
-    font-size: 1rem;
-  }
-  
-  /* Sichtbar-Zustand */
-  section-outfit .outfit-cart-notification.show {
-    right: 20px;
-  }
   
   /* Responsive Anpassung */
   @media (max-width: 600px) {
